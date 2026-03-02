@@ -449,6 +449,14 @@ The application can be deployed to:
 - [Safeguarding & Monitoring](docs/SAFEGUARDING_MONITORING.md) — Break-glass access, audit logging, bias monitoring, and accountability procedures
 - [WV Baseline Policy Profile](docs/WV_BASELINE_POLICY_PROFILE.md) — Regulatory compliance, minimum standards, and implementation checklist
 
+### Regulatory Compliance
+- [WV Code Chapter 49 Compliance Analysis](docs/WV_CODE_COMPLIANCE_ANALYSIS.md) — **Comprehensive regulatory alignment** with West Virginia child welfare law, including:
+  - Detailed mapping of CareBridge features to specific WV Code sections
+  - Facility configuration and policy requirements
+  - Staff training requirements
+  - Compliance checklist for pre-deployment readiness
+  - Enhancement opportunities for operational excellence
+
 ---
 
 ## Troubleshooting

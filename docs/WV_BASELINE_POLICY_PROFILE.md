@@ -139,6 +139,7 @@ CareBridge Companion is designed with commitment to creating safe, affirming spa
 
 ## Related Documents
 
+- [WV_CODE_COMPLIANCE_ANALYSIS.md](WV_CODE_COMPLIANCE_ANALYSIS.md) — **Comprehensive regulatory alignment** — Detailed mapping of CareBridge features to WV Code Chapter 49 requirements, facility policy checklist, and enhancement opportunities
 - [DEI_FRAMEWORK.md](DEI_FRAMEWORK.md) — Complete diversity, equity, inclusion framework
 - [LGBTQ_AFFIRMING_POLICY.md](LGBTQ_AFFIRMING_POLICY.md) — Specific commitments to LGBTQ+ youth
 - [SAFEGUARDING_MONITORING.md](SAFEGUARDING_MONITORING.md) — Complete safeguarding procedures and break-glass monitoring
