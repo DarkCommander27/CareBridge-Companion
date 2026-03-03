@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareBridge Companion — Staff Information Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        main {
+            padding: 40px;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: inline-block;
+        }
+
+        h3 {
+            color: #764ba2;
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #667eea;
+            font-size: 1.1em;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+            line-height: 1.8;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            overflow-x: auto;
+            line-height: 1.5;
+        }
+
+        .list-item-check {
+            display: flex;
+            align-items: flex-start;
+            margin: 10px 0;
+        }
+
+        .list-item-check input {
+            margin-right: 10px;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+
+        .scenario {
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .scenario-title {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        tr:hover {
+            background: #f0f4ff;
+        }
+
+        .quote {
+            font-size: 1.1em;
+            font-style: italic;
+            color: #555;
+            padding: 20px 0 20px 20px;
+            border-left: 4px solid #764ba2;
+            margin: 25px 0;
+        }
+
+        .checklist {
+            background: #f0f4ff;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .checklist h3 {
+            margin-top: 0;
+            color: #667eea;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+            font-size: 0.95em;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-right: 12px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 30px 40px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .footer p {
+            margin-bottom: 8px;
+        }
+
+        .emoji {
+            margin-right: 8px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .feature-card strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .toc {
+            background: #f0f4ff;
+            border: 1px solid #667eea;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .toc h3 {
+            color: #667eea;
+            margin-top: 0;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        .toc a {
+            color: #667eea;
+            text-decoration: none;
+            display: block;
+            padding: 8px 0;
+            transition: color 0.3s;
+        }
+
+        .toc a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 20px;
+            }
+
+            header {
+                padding: 40px 20px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                border-radius: 0;
+            }
+        }
+
+        .print-friendly {
+            display: none;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            header {
+                page-break-after: avoid;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+
+            h2 {
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CareBridge Companion</h1>
+            <p>Staff Information Guide</p>
+            <p style="font-size: 0.95em; margin-top: 15px;">Understanding the System, Your Role, and How It Works</p>
+        </header>
+
+        <main>
+            <!-- Table of Contents -->
+            <div class="toc">
+                <h3>Quick Navigation</h3>
+                <ul>
+                    <li><a href="#overview">Quick Overview</a></li>
+                    <li><a href="#why-it-matters">Why It Matters</a></li>
+                    <li><a href="#is-isnt">What It IS and ISN'T</a></li>
+                    <li><a href="#how-it-works">How the System Works</a></li>
+                    <li><a href="#key-features">Key Features</a></li>
+                    <li><a href="#privacy">Privacy & Boundaries</a></li>
+                    <li><a href="#scenarios">Common Scenarios</a></li>
+                    <li><a href="#support">How to Get Help</a></li>
+                    <li><a href="#success">What Success Looks Like</a></li>
+                    <li><a href="#checklist">Getting Started</a></li>
+                </ul>
+            </div>
+
+            <!-- Section 1 -->
+            <section id="overview">
+                <h2>Quick Overview: What is CareBridge Companion?</h2>
+                <p>CareBridge Companion is an <strong>on-site AI-powered youth support system</strong> designed to help youth in group living facilities communicate openly about their feelings, experiences, and concerns. The system generates information that helps care teams respond faster, more consistently, and more compassionately to youth needs.</p>
+
+                <p><strong>In simple terms:</strong></p>
+                <ul>
+                    <li>Youth talk to a supportive AI companion (like a caring listener available 24/7)</li>
+                    <li>The system watches for safety concerns and alerts staff when something matters</li>
+                    <li>Staff get summaries of patterns instead of having to read everything</li>
+                    <li>The whole facility can respond more consistently across shifts and teams</li>
+                </ul>
+            </section>
+
+            <!-- Section 2 -->
+            <section id="why-it-matters">
+                <h2>Why CareBridge Companion Matters to Your Work</h2>
+
+                <h3>The Problem It Solves</h3>
+                <p>In group living, several things happen:</p>
+                <ul>
+                    <li><strong>Context gets lost</strong> between shifts when different staff are on duty</li>
+                    <li><strong>Youth may open up outside therapy hours</strong> with concerns that fall through cracks</li>
+                    <li><strong>Handoffs are inconsistent</strong> — what matters to one shift may get missed by the next</li>
+                    <li><strong>Staff document differently</strong> — making it hard to spot patterns</li>
+                    <li><strong>Youth may not feel safe</strong> talking to some staff members about certain things</li>
+                </ul>
+
+                <h3>How CareBridge Helps</h3>
+                <ul>
+                    <li><strong>24/7 availability</strong> — Youth can check-in anytime, no appointment needed</li>
+                    <li><strong>Consistent briefings</strong> — Care team gets the same story, not fragmented information</li>
+                    <li><strong>Faster pattern detection</strong> — System flags escalating concerns (e.g., increasing hopelessness, changing mood)</li>
+                    <li><strong>Better preparation</strong> — Therapists and supervisors know what to focus on</li>
+                    <li><strong>Reduced documentation burden</strong> — Structured summaries instead of reading logs</li>
+                    <li><strong>Equal voice</strong> — All youth get the same access, reducing feeling invisible or unheard</li>
+                    <li><strong>LGBTQ+ affirming</strong> — Youth of all identities see themselves represented in language and assumptions</li>
+                </ul>
+            </section>
+
+            <!-- Section 3 -->
+            <section id="is-isnt">
+                <h2>What CareBridge Companion IS and ISN'T</h2>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <strong style="color: #28a745;">✅ What It IS</strong>
+                        <ul style="margin: 0;">
+                            <li>A supportive listening tool where youth feel heard</li>
+                            <li>A system that helps identify patterns and timing of concerns</li>
+                            <li>A briefing tool to prepare staff for conversations with youth</li>
+                            <li>A safety alert system for high-risk messages</li>
+                            <li>Part of your facility's care infrastructure</li>
+                            <li>A tool to reduce the burden on direct-care staff</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <strong style="color: #dc3545;">❌ What It ISN'T</strong>
+                        <ul style="margin: 0;">
+                            <li><strong>Not a therapist</strong> — Provides supportive conversation, not clinical treatment</li>
+                            <li><strong>Not a crisis hotline</strong> — Safety alerts need staff follow-up</li>
+                            <li><strong>Not a staff messaging system</strong> — Staff cannot send messages to youth</li>
+                            <li><strong>Not private from facility oversight</strong> — All conversations are facility records</li>
+                            <li><strong>Not a replacement for human connection</strong> — It's a tool that supports your work</li>
+                            <li><strong>Not automated action</strong> — Alerts still require human judgment</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4 -->
+            <section id="how-it-works">
+                <h2>How the System Works: A Day in the Life</h2>
+
+                <h3>Morning Briefing</h3>
+                <p><strong>6:00 AM</strong> — Overnight supervisor comes on shift and checks the CareBridge dashboard</p>
+                <ul>
+                    <li>3 new messages flagged overnight (1 medium alert, 2 routine)</li>
+                    <li>Briefing summary: "Kai reported feeling lonely; Marcus sleeping poorly (3rd night); Jordan mentioned family call stress"</li>
+                    <li>Supervisor quickly reviews actual messages for Marcus, plans check-in before breakfast</li>
+                </ul>
+
+                <p><strong>7:30 AM</strong> — Direct-care staff gets casual briefing during shift meeting</p>
+                <ul>
+                    <li>"Just so you know, Marcus isn't sleeping great; extra attention today"</li>
+                    <li>You know context before talking to him, can ask better questions, respond more thoughtfully</li>
+                </ul>
+
+                <h3>During the Day</h3>
+                <p><strong>10:00 AM</strong> — Youth starts a conversation with the companion</p>
+                <ul>
+                    <li>Talks about peer conflict, feeling frustrated, worried about group outing</li>
+                    <li>Companion listens, asks clarifying questions, suggests coping strategies</li>
+                    <li>System detects medium concern (acute frustration but no safety red flags)</li>
+                    <li>No immediate alert; message goes into daily briefing</li>
+                </ul>
+
+                <p><strong>2:00 PM</strong> — A medium alert arrives at staff</p>
+                <ul>
+                    <li>Different youth disclosed possible abuse indicator in their chat</li>
+                    <li>Alert goes to supervisor and therapist immediately: "Potential abuse indicator — see message"</li>
+                    <li>You don't see the full transcript (privacy control) but know to check on them</li>
+                    <li>You follow facility protocol: supervision, careful conversation, reporting to safeguarding</li>
+                </ul>
+
+                <h3>Evening Shift</h3>
+                <p><strong>5:00 PM</strong> — You start your evening shift, check the system</p>
+                <ul>
+                    <li>Briefing tells you what happened during day: "Kai and Marcus are doing okay; check on Jordan before family call"</li>
+                    <li>You're prepared for the shift without detailed reading</li>
+                </ul>
+
+                <p><strong>8:00 PM</strong> — You respond to a safety alert</p>
+                <ul>
+                    <li>A youth expressed feeling hopeless and mentioned "not wanting to be here"</li>
+                    <li>You follow your facility's protocol: immediate supervision, safety assessment, notification</li>
+                    <li>System logged the alert time, message content, and your response</li>
+                </ul>
+
+                <h3>Staff Consistency</h3>
+                <p>Because all staff see the same information in the same way:</p>
+                <ul>
+                    <li>Night shift knows what day shift knows</li>
+                    <li>Relief staff know the context</li>
+                    <li>New staff member gets up to speed faster</li>
+                    <li>Youth experience consistency: "Everyone seems to know what's going on with me"</li>
+                </ul>
+            </section>
+
+            <!-- Section 5 -->
+            <section id="key-features">
+                <h2>Key Features You'll Use</h2>
+
+                <h3>1. Daily Briefings</h3>
+                <p><strong>What:</strong> A short summary of the last 24 hours (or filtered by time range)</p>
+                
+                <div class="code-block">
+DAILY BRIEFING — March 3, 2026 (6:00 AM)
+
+MOOD TRENDS:
+- Kai: anxiety increasing (unusual for her)
+- Jordan: withdrawn, less engagement
++ Marcus: mood improved compared to yesterday
+
+THEMES:
+- Family contact (4 youth mentioned)
+- Peer conflict (2 incidents)
+- Sleep issues (3 youth)
+
+SUGGESTED ACTIONS:
+- Check in with Kai before group time
+- Jordan might be ready for one-on-one
+- Encourage Marcus (improvement is good)
+
+TIMING: Overnight alerts routed to on-call clinician
+                </div>
+
+                <p><strong>What you do with it:</strong></p>
+                <ul>
+                    <li>Prepare for the day</li>
+                    <li>Know who needs extra attention</li>
+                    <li>Approach conversations with context</li>
+                    <li>Coordinate with your team</li>
+                </ul>
+
+                <h3>2. Safety Alerts</h3>
+                <p><strong>What:</strong> Immediate notification when system detects high-risk language or disclosures</p>
+
+                <p><strong>Examples that trigger alerts:</strong></p>
+                <ul>
+                    <li>Self-harm language ("I want to hurt myself")</li>
+                    <li>Abuse or exploitation indicators ("My uncle..."; "He told me not to tell")</li>
+                    <li>Crisis language ("I can't do this anymore"; "I don't want to be here")</li>
+                    <li>Urgent medical concerns ("Can't breathe"; "I took pills")</li>
+                    <li>Concerning patterns ("This is the 5th message about wanting to run")</li>
+                </ul>
+
+                <p><strong>What you do:</strong></p>
+                <ol>
+                    <li>Read the alert (includes severity: medium/high/critical)</li>
+                    <li>Follow your facility's protocol (supervision, assessment, notification)</li>
+                    <li>Take action or escalate</li>
+                    <li>Document what you did</li>
+                    <li>System logs everything for audit trail</li>
+                </ol>
+
+                <h3>3. Conversation Details</h3>
+                <p><strong>What:</strong> Ability to view youth's messages and system analysis</p>
+
+                <p><strong>You can see:</strong></p>
+                <ul>
+                    <li>Full conversation (messages youth sent to the companion)</li>
+                    <li>Mood analysis ("Reported anxiety, frustration; emotional intensity high")</li>
+                    <li>Themes detected ("Family concerns, peer relationships")</li>
+                    <li>Safety flags applied ("Potential self-harm indicators")</li>
+                    <li>Suggested actions from the system</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <strong>Privacy note:</strong> Some details are minimized unless you need them for safety/care. If you need more information, you can request break-glass access with documented reason and your action is logged.
+                </div>
+
+                <h3>4. Notes & Documentation</h3>
+                <p><strong>What:</strong> Ability to add staff observations to a youth's record</p>
+
+                <p><strong>Examples:</strong></p>
+                <ul>
+                    <li>"Checked in after alert; youth seemed less anxious after walk"</li>
+                    <li>"Family call happened 3 PM; seemed to help mood"</li>
+                    <li>"Mentioned homework stress; offered tutoring"</li>
+                    <li>"Sleep pattern improving after routine change"</li>
+                </ul>
+
+                <p><strong>Why it matters:</strong> Your observation + system data = fuller picture for clinicians and next shift</p>
+
+                <h3>5. Dashboard & Statistics</h3>
+                <p><strong>What:</strong> Overview of system activity and trends (if facility shows you)</p>
+
+                <p><strong>Might include:</strong></p>
+                <ul>
+                    <li>Total check-ins this week</li>
+                    <li>Youth engagement rate</li>
+                    <li>Alert frequency and types</li>
+                    <li>Most common themes (family, peer, school, identity)</li>
+                    <li>Trend arrows (improving/declining)</li>
+                </ul>
+
+                <p><strong>Why it matters:</strong> Helps leadership see if the system is helping, where to focus resources</p>
+            </section>
+
+            <!-- Section 6 -->
+            <section id="privacy">
+                <h2>Understanding Youth Privacy & Boundaries</h2>
+
+                <h3>What Youth Know</h3>
+                <ul>
+                    <li>Their conversations are with the companion</li>
+                    <li>Staff can see summaries and alerts</li>
+                    <li>The facility is monitoring for safety (age-appropriate explanation)</li>
+                    <li>Some messages might trigger alerts to staff (so staff can help)</li>
+                    <li>Their identity is protected in how information is shared</li>
+                </ul>
+
+                <h3>What Staff Can & Can't See</h3>
+                
+                <table>
+                    <tr>
+                        <th>✅ You CAN See</th>
+                        <th>❌ You CAN'T See (unless authorized)</th>
+                    </tr>
+                    <tr>
+                        <td>Briefings (summaries of themes and mood)</td>
+                        <td>Full transcript of all messages</td>
+                    </tr>
+                    <tr>
+                        <td>Safety alerts (with message excerpts when critical)</td>
+                        <td>Identity-sensitive disclosures</td>
+                    </tr>
+                    <tr>
+                        <td>Overall patterns and trends</td>
+                        <td>Certain details (like specific names mentioned)</td>
+                    </tr>
+                    <tr>
+                        <td>Notes you or other staff have added</td>
+                        <td>Conversations without safety reason</td>
+                    </tr>
+                </table>
+
+                <h3>Break-Glass Access (Safeguarding/Investigation)</h3>
+                <ul>
+                    <li>Only admin, safeguarding, or authorized leadership</li>
+                    <li>Requires documented reason ("We think this youth may be experiencing abuse")</li>
+                    <li>Your action is logged with timestamp and reason</li>
+                    <li>Used for investigations or critical safety decisions</li>
+                </ul>
+
+                <h3>Minimum Necessary Principle</h3>
+                <ul>
+                    <li>On-call clinician during crisis gets more detail than general staff</li>
+                    <li>Staff on the unit see briefings; therapist sees more for session prep</li>
+                    <li>Everyone's access is logged and monitored</li>
+                    <li>You only see what you need to do your job safely and well</li>
+                </ul>
+            </section>
+
+            <!-- Section 7 -->
+            <section id="scenarios">
+                <h2>Common Staff Scenarios</h2>
+
+                <div class="scenario">
+                    <div class="scenario-title">Scenario 1: Morning Briefing Alert</div>
+                    <p><strong>Situation:</strong> You see a briefing note: "Sam reported feeling very sad and hopeless"</p>
+                    
+                    <div class="success-box">
+                        <strong>✅ What you should do:</strong>
+                        <ol>
+                            <li>Plan a check-in before group activities</li>
+                            <li>Ask gentle, open questions ("How are you doing today?")</li>
+                            <li>Listen without judgment</li>
+                            <li>If concerning language present, follow safety protocol</li>
+                            <li>Document your observation</li>
+                        </ol>
+                    </div>
+
+                    <div class="warning-box">
+                        <strong>❌ What NOT to do:</strong>
+                        <ul>
+                            <li>Assume the system diagnosis is correct</li>
+                            <li>Treat it like a crisis if system says "medium alert"</li>
+                            <li>Ask about specific messages ("I saw you told the companion...")</li>
+                            <li>Share details with other youth</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="scenario">
+                    <div class="scenario-title">Scenario 2: Critical Safety Alert</div>
+                    <p><strong>Situation:</strong> You receive alert: "CRITICAL — Self-harm language detected in message from Alex"</p>
+                    
+                    <div class="success-box">
+                        <strong>✅ What you should do:</strong>
+                        <ol>
+                            <li>Read the alert message immediately</li>
+                            <li>Follow your facility's safety protocol (immediate steps depend on facility)</li>
+                            <li>If not on duty, notify supervisor/on-call clinician immediately</li>
+                            <li>Ensure direct supervision if indicated</li>
+                            <li>Document time, what you saw, what you did</li>
+                            <li>Escalate per mandatory reporting if needed</li>
+                        </ol>
+                    </div>
+
+                    <p style="margin-top: 15px;"><strong>Time frame:</strong> Critical alerts = respond within minutes</p>
+                </div>
+
+                <div class="scenario">
+                    <div class="scenario-title">Scenario 3: Youth Asks About the System</div>
+                    <p><strong>Situation:</strong> Jordan asks, "Why does everyone know about my conversations?"</p>
+                    
+                    <div class="success-box">
+                        <strong>✅ What to explain:</strong>
+                        <ul>
+                            <li>"We use a system that helps us understand what youth need and respond faster"</li>
+                            <li>"The companion listens and summarizes what matters; we use that to help better"</li>
+                            <li>"Safety is the main reason we monitor — if you mention hurting yourself, we need to know"</li>
+                            <li>"You can talk about anything; we're here to help, not judge"</li>
+                            <li>"Your identity and private details are protected — we don't share everything with everyone"</li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-box">
+                        <strong>❌ What NOT to say:</strong>
+                        <ul>
+                            <li>"Big Brother is watching"</li>
+                            <li>"Everything you say goes to staff"</li>
+                            <li>"It's just a robot, not real help"</li>
+                            <li>"You have no privacy here"</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="scenario">
+                    <div class="scenario-title">Scenario 4: You Disagree With a System Flag</div>
+                    <p><strong>Situation:</strong> System flags Casey's message "I'm so tired of this" as concerning, but you know Casey is just tired from a late homework assignment.</p>
+                    
+                    <div class="success-box">
+                        <strong>✅ What to do:</strong>
+                        <ol>
+                            <li>Use your professional judgment (you know Casey better than the system)</li>
+                            <li>Check on Casey anyway ("You seem tired — everything okay?")</li>
+                            <li>Note in system that context was assignment, not mental health concern</li>
+                            <li>Provide feedback helps the system improve</li>
+                            <li>Trust yourself; the system is a tool, not a replacement for your expertise</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 8 -->
+            <section id="support">
+                <h2>How to Get Help</h2>
+
+                <h3>Technical Questions</h3>
+                <ul>
+                    <li>"How do I reset my password?"</li>
+                    <li>"How do I access the dashboard?"</li>
+                    <li>"How do I add a note to a youth's record?"</li>
+                </ul>
+                <p><strong>Ask:</strong> Your supervisor or IT support contact</p>
+
+                <h3>Policy/Procedure Questions</h3>
+                <ul>
+                    <li>"What should I do if I see a medium alert?"</li>
+                    <li>"Who do I escalate to for possible abuse?"</li>
+                    <li>"What information can I share with parents?"</li>
+                </ul>
+                <p><strong>Ask:</strong> Your supervisor, safeguarding lead, or facility director</p>
+
+                <h3>Concerns About the System</h3>
+                <ul>
+                    <li>"This alert seems wrong"</li>
+                    <li>"I don't think the system should have made this flag"</li>
+                    <li>"A youth told me they don't like using it"</li>
+                </ul>
+                <p><strong>Ask:</strong> Your supervisor; feedback helps improve the system</p>
+
+                <h3>Training & Initial Setup</h3>
+                <ul>
+                    <li>Your facility will provide: Login credentials, password setup, initial walkthrough</li>
+                    <li>Your supervisor will explain: Your specific role, what alerts you receive, who to contact</li>
+                    <li>You'll be trained on: Your facility's protocols, how to respond to different alert types, documentation requirements</li>
+                </ul>
+            </section>
+
+            <!-- Section 9 -->
+            <section id="success">
+                <h2>What Success Looks Like</h2>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <strong style="color: #667eea;">For Youth</strong>
+                        <ul style="margin: 0; font-size: 0.95em;">
+                            <li>They feel heard and understood</li>
+                            <li>They open up about things they wouldn't tell staff</li>
+                            <li>They feel the staff team is coordinated and knows what matters to them</li>
+                            <li>They experience faster, more consistent response to concerns</li>
+                            <li>They feel safer</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <strong style="color: #667eea;">For Staff</strong>
+                        <ul style="margin: 0; font-size: 0.95em;">
+                            <li>You have context before conversations</li>
+                            <li>You spend less time reading to understand what happened</li>
+                            <li>You catch concerns earlier</li>
+                            <li>You coordinate better across shifts</li>
+                            <li>You feel supported by data and systems</li>
+                            <li>Your work feels more effective</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <strong style="color: #667eea;">For the Facility</strong>
+                        <ul style="margin: 0; font-size: 0.95em;">
+                            <li>Better continuity across shifts and teams</li>
+                            <li>Faster response to safety concerns</li>
+                            <li>Stronger safeguarding and accountability</li>
+                            <li>Better outcomes for youth</li>
+                            <li>Reduced documentation burden</li>
+                            <li>Improved regulatory compliance</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 10 -->
+            <section>
+                <h2>Key Principles to Remember</h2>
+
+                <div class="highlight-box">
+                    <h4>1. System ≠ Judgment</h4>
+                    <p>The system flags patterns and language, not fixed assessments. A "high alert" doesn't mean the youth is in crisis; it means careful attention is needed. <strong>You make the final call.</strong></p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>2. Human Care Comes First</h4>
+                    <p>The system is a tool to support your expertise and judgment, not replace it. <strong>You know your youth. Trust yourself.</strong></p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>3. Context Matters</h4>
+                    <p>The system doesn't know the full story (family dynamics, historical patterns you've observed, their sense of humor). <strong>Your judgment + system data = better decisions.</strong></p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>4. Privacy with Purpose</h4>
+                    <p>Youth information is protected and accessed minimally. Breaches of privacy undermine trust in the whole system. <strong>Guard youth information like you'd want yours guarded.</strong></p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>5. Feedback Improves Everything</h4>
+                    <p>When you see an error or have an idea, speak up. The system learns from your corrections. <strong>Your insight makes the system better.</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 11 -->
+            <section id="checklist">
+                <h2>Getting Started Checklist</h2>
+                <div class="checklist">
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <span>I have my login credentials and password set</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <span>I understand my role (direct-care staff, supervisor, clinician, etc.)</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <span>I know which alerts apply to my position</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <span>I've done the initial system walkthrough with my supervisor</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <span>I know my facility's alert response protocol</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <span>I know who to escalate concerns to</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <span>I understand my facility's privacy policy</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <span>I've reviewed the Direct-Care One-Pager or Leadership One-Pager (as applicable)</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <span>I know how to contact for technical support</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <span>I'm ready to start using the system</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 12 -->
+            <section>
+                <h2>Final Thought</h2>
+                <div class="quote">
+                    CareBridge Companion is built on the belief that <strong>youth deserve to be heard</strong> and that <strong>staff deserve tools that make their job easier and more effective</strong>. The system works best when you trust it, question it, and use your judgment alongside it.
+                </div>
+                <p>Your expertise, care, and attention to the youth in your facility are what make this system powerful. Technology helps you do what you already do—listen carefully, notice patterns, and respond with compassion.</p>
+                <p style="font-size: 1.1em; color: #667eea; font-weight: bold; margin-top: 20px;">Welcome to the team. Let's help these youth thrive.</p>
+                <p style="margin-top: 20px;">Questions? Concerns? Ideas? Talk to your supervisor or facility director. Your feedback matters.</p>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p><strong>Last Updated:</strong> March 3, 2026</p>
+            <p>CareBridge Companion — Staff Information Guide</p>
+            <p style="font-size: 0.9em; color: #999; margin-top: 15px;">This guide is a living document. Your feedback helps us improve it.</p>
+        </footer>
+    </div>
+</body>
+</html>
